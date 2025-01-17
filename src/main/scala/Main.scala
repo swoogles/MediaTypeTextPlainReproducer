@@ -1,9 +1,6 @@
-import zio._
-import zio.http.Server
 import zio.http.endpoint.openapi.{OpenAPIGen, SwaggerUI}
 
 import zio.schema.Schema
-
 import zio.http._
 import zio.http.endpoint.Endpoint
 import zio.schema.DeriveSchema.gen
@@ -16,7 +13,7 @@ object UserIdsCsvRaw {
   implicit val schema: Schema[UserIdsCsvRaw] = Schema.primitive[String].transform(UserIdsCsvRaw(_), _.content)
 }
 
-object Main extends ZIOAppDefault {
+object Main extends zio.ZIOAppDefault {
 
   val postUsersCsv =
     Endpoint(
