@@ -19,14 +19,14 @@ object Main extends zio.ZIOAppDefault {
     Endpoint(
       Method.POST / "users"
     )
-      .in[UserIdsCsvRaw](MediaType.text.plain)
+      .in[UserIdsCsvRaw](MediaType.text.plain) // Removing MediaType and using default value works fine
       .out[Unit]
 
   val getUsersCsv =
     Endpoint(
       Method.GET / "users"
     )
-      .out[UserIdsCsvRaw](Status.Ok, MediaType.text.plain)
+      .out[UserIdsCsvRaw](Status.Ok, MediaType.text.plain) // Removing MediaType and using default value works fine
       .examplesOut(
         "premade" -> UserIdsCsvRaw(
           """user1
